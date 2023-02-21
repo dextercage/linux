@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+        grafana:
+                image: grafana/grafana
+                container_name: monitoring_grafana
+                restart: always
+                ports:
+                        - 8080:3000
+                volumes:
+                        - grafana-data:/var/lib/grafana
+                        - grafana-config:/etc/grafana/provisioning/datasource
+                environment:
+                        GF_SECURITY_ADMIN_PASSWORD: "Skills53"
+        prometheus:
+                image: prom/prometheus
+                container_name: monitoring_prometheus
+                restart: always
+                ports:
+                        - 9090:9090
+                volumes:
+                        - prometheus-data:/var/lib/prometheus
+                        - /prometheus.yml:/etc/prometheus/prometheus.yml
+                command:
+                        - '--config.file=/etc/prometheus/prometheus.yml'
+        node-exporter:
+                image: prom/node-exporter
+                container_name: monitoring_node_exporter
+                restart: always
+                ports:
+                        - 9100:9100
+                volumes:
+                        - /:/rootfs
+                command:
+                        - '--path.rootfs=/rootfs'
+
+volumes:
+        grafana-data:
+        grafana-config:
+        prometheus-data:
+
+
+---------------------
+# prometheus.yml
+
+global:
+        scrape_interval: 5s
+scrape_configs:
+        - job_name: node-exporter
+          static_configs:
+                - targets: ["monitoring_node_exporter:9100"]
+
