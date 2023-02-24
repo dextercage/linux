@@ -11,7 +11,7 @@ services:
                         - grafana-data:/var/lib/grafana
                         - grafana-config:/etc/grafana/provisioning/datasource
                 environment:
-                        GF_SECURITY_ADMIN_PASSWORD: "Skills53"
+                        GF_SECURITY_ADMIN_PASSWORD: "changeme"
         prometheus:
                 image: prom/prometheus
                 container_name: monitoring_prometheus
