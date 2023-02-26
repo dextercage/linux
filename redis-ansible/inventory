@@ -1,0 +1,11 @@
+[all:vars]
+ansible_ssh_user=root
+ansible_ssh_private_key_file=/home/kiumars/.ssh/greenweb.pem
+
+[redis_cluster:children]
+redis_cluster_infra
+
+[redis_cluster_infra]
+54.93.223.225    redis_role="master"
+18.184.4.85    redis_role="slave"
+52.57.153.218  redis_role="slave"

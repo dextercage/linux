@@ -1,0 +1,7 @@
+---
+- name: exp
+  hosts: all
+  tasks:
+    - name: Include ansible-mariadb-galera-cluster
+      include_role:
+        name: mrlesmithjr.mariadb_galera_cluster
