@@ -1,0 +1,26 @@
+#/etc/mysql/conf.d/galera.cnf
+# for every node with their name and ip
+
+
+[mysqld]
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+bind-address=0.0.0.0
+
+# Galera Provider Configuration
+wsrep_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+
+# Galera Cluster Configuration
+wsrep_cluster_name="test_cluster"
+wsrep_cluster_address="gcomm://37.152.190.61,37.152.191.41,37.152.191.158"
+
+# Galera Synchronization Configuration
+wsrep_sst_method=rsync
+
+# Galera Node Configuration
+wsrep_node_address="37.152.191.158"
+wsrep_node_name="slave_2_node"
+
+
