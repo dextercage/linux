@@ -2,7 +2,6 @@
 ansible_ssh_user=root
 ansible_ssh_private_key_file=/home/kiumars/Downloads/key.pem
 [galera-cluster-nodes]
-18.185.8.38
-3.75.93.32
-18.194.134.10
-3.127.148.157
+galera1
+galera2
+galera3
