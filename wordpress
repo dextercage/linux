@@ -1,4 +1,8 @@
 https://wordpress.org/latest.tar.gz
+apt-get install php7.4 php7.4-cli php7.4-fpm php7.4-mysql php7.4-json php7.4-opcache php7.4-mbstring php7.4-xml php7.4-gd php7.4-curl
+
+chown -R www-data:www-data *
+chmod -R 755 *
 
 CREATE DATABASE wordpress;
 CREATE USER 'wpuser'@'localhost' IDENTIFIED BY '1975kjKJ1975';
@@ -8,3 +12,11 @@ FLUSH PRIVILEGES;
 
 define( 'WP_HOME', 'https://example.com' );
 define( 'WP_SITEURL', 'https://example.com' );
+
+# in nginx conf
+index.php
+
+            location ~ \.php$ {
+                         include snippets/fastcgi-php.conf;
+                         fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+            }
