@@ -1,0 +1,4 @@
+apt install ansible
+ansible-galaxy install mrlesmithjr.mariadb_galera_cluster
+ansible-playbook -i inventory playbook.yml
+
