@@ -4,3 +4,7 @@ CREATE DATABASE wordpress;
 CREATE USER 'wpuser'@'localhost' IDENTIFIED BY '1975kjKJ1975';
 GRANT ALL ON wordpress.* TO 'wpuser'@'localhost';
 FLUSH PRIVILEGES;
+
+
+define( 'WP_HOME', 'https://example.com' );
+define( 'WP_SITEURL', 'https://example.com' );
