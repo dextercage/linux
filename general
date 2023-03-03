@@ -13,6 +13,10 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 # for hiding servers version in the response header
         server_tokens off;
 
+# for this is apache2 add this in apache2.conf or conf-enabled/security
+ServerSignature Off
+ServerTokens Prod
+
 # apache2 file server with htdigest credencials
 #
 Alias /internal /opt/internal
