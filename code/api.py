@@ -1,3 +1,10 @@
+# sudo apt-get install python-dev default-libmysqlclient-dev libssl-dev
+# sudo yum install python3-devel
+# sudo yum install python-devel
+# pip install flask_mysqldb
+# from flask import Flask,render_template, request
+# from flask_mysqldb import MySQL
+
 from flask import Flask, request, jsonify, send_from_directory, render_template, send_file
 from flask_mysqldb import MySQL
 from randomuser import RandomUser
