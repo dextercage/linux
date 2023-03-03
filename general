@@ -7,3 +7,23 @@ certbot --nginx -d domain -d domain ...
 # for self-signed certificate
 
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -sha256
+
+# nginx configs
+#
+# for hiding servers version in the response header
+        server_tokens off;
+
+# apache2 file server with htdigest credencials
+#
+Alias /internal /opt/internal
+<Directory /opt/internal>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Header Set x-server-name websrv2
+    AuthType Digest
+    AuthName "myrealm"
+    AuthDigestDomain "/opt/internal"
+    AuthDigestProvider file
+    AuthUserFile /etc/apache2/passwords
+    Require valid-user
+</Directory>
